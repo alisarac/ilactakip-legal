@@ -54,7 +54,7 @@
 <li>telefonları uyarabilmek için bildirim adresi (FCM token),</li>
 <li>kayıtların yazılma ve son görülme zamanları.</li>
 </ul>
-<p>Alınan ilaç kayıtları sunucuda en çok 30 gün durur, sonra kendiliğinden silinir. “Paylaşımı kapat” dediğinizde paylaşım sunucudan silinir. Takip eden kişi “Takibi bırak” dediğinde kimliği paylaşımdan çıkar. Google, Firebase'i işleyen hizmet sağlayıcı olarak teknik kayıtlar (ör. IP adresi) tutabilir: <a href="https://firebase.google.com/support/privacy">firebase.google.com/support/privacy</a>.</p>
+<p>Alınan ilaç kayıtları sunucuda en çok 30 gün durur, sonra kendiliğinden silinir. “Paylaşımı kapat” dediğinizde paylaşım sunucudan silinir. Takip eden kişi “Takibi bırak” dediğinde kimliği paylaşımdan çıkar. Firebase bileşenleri, hizmetin çalışması için Google'a telefon başına rastgele bir uygulama örneği kimliği (Firebase Installation ID) ve bildirim adresi iletir; bunlar kişiyi tanıtan bilgi içermez. Google, Firebase'i işleyen hizmet sağlayıcı olarak teknik kayıtlar (ör. IP adresi) tutabilir: <a href="https://firebase.google.com/support/privacy">firebase.google.com/support/privacy</a>.</p>
 <p>Takip eden yakınınız ilaç listenizde değişiklik <strong>önerebilir</strong>; öneri aynı şifreli yoldan gelir ve siz telefonunuzda kabul etmedikçe hiçbir şey değişmez.</p>
 
 <h2>İlaç bilgileri ve kamera</h2>
@@ -115,7 +115,7 @@
 <li>a notification address (FCM token) so the phones can be alerted,</li>
 <li>the times entries were written and last seen.</li>
 </ul>
-<p>Dose entries stay on the server for at most 30 days and are then deleted automatically. “Stop sharing” deletes the share from the server. When a follower chooses “Stop following”, their ID is removed from the share. As the service provider running Firebase, Google may keep technical logs (such as IP addresses): <a href="https://firebase.google.com/support/privacy">firebase.google.com/support/privacy</a>.</p>
+<p>Dose entries stay on the server for at most 30 days and are then deleted automatically. “Stop sharing” deletes the share from the server. When a follower chooses “Stop following”, their ID is removed from the share. Firebase components send Google a random per-phone app instance ID (Firebase Installation ID) and a notification address so that the service can work; neither identifies you. As the service provider running Firebase, Google may keep technical logs (such as IP addresses): <a href="https://firebase.google.com/support/privacy">firebase.google.com/support/privacy</a>.</p>
 <p>A relative who follows you can <strong>suggest</strong> a change to your medicine list; the suggestion arrives the same encrypted way and nothing changes unless you accept it on your phone.</p>
 
 <h2>Medicine information and the camera</h2>
