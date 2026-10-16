@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aldım / Took It — Gizlilik Politikası / Privacy Policy</title>
+<style>
+  :root { color-scheme: light dark; }
+  body { margin: 0 auto; padding: 40px 22px 80px; max-width: 44rem;
+         font: 16px/1.65 Georgia, 'Times New Roman', serif; background: #fbf7f0; color: #1b2333; }
+  a { color: #1f3a5f; }
+  @media (prefers-color-scheme: dark) { body { background: #0e1522; color: #eef1f6; } a { color: #e8b65a; } }
+  img { width: 84px; height: 84px; border-radius: 18px; display: block; }
+  h1 { font-size: 1.7rem; margin: 22px 0 4px; font-weight: 500; }
+  h2 { font-size: 1.15rem; margin: 34px 0 8px; font-weight: 500; }
+  .sub { opacity: .65; margin: 0 0 8px; }
+  nav { margin: 18px 0 0; }
+  nav a { margin-right: 14px; }
+  hr { border: 0; border-top: 1px solid currentColor; opacity: .18; margin: 44px 0; }
+</style>
+</head>
+<body>
+<img src="icon.png" alt="Aldım">
+<nav><a href="#tr">Türkçe</a><a href="#en">English</a></nav>
+
+<section id="tr" lang="tr">
+<h1>Aldım: İlaç Hatırlatıcı &amp; Aile</h1>
+<p class="sub">Gizlilik Politikası · Son güncelleme: 16 Ekim 2026</p>
+<p>Bu politika Aldım uygulamasının (İngilizcede “Took It”; Android paket adı com.alisrc.ilactakip) hangi bilgileri nasıl işlediğini anlatır. Veri sorumlusu: Ali Saraç, iletişim: <a href="mailto:alisarac@gmail.com">alisarac@gmail.com</a>.</p>
+
+<h2>Kısaca</h2>
+<ul>
+<li>Hesap yok, reklam yok, analiz, izleme ya da çökme raporlama aracı yok.</li>
+<li>İlaçlarınız, aldığınız saatler ve ölçümleriniz <strong>telefonunuzda</strong> durur.</li>
+<li>Yalnız siz <strong>paylaşımı açarsanız</strong>, bu bilgiler telefonunuzda şifrelenerek yakınlarınızın telefonuna gider. Aradaki sunucu ve biz içeriği okuyamayız.</li>
+<li>Aldım bir hatırlatıcıdır, <strong>tıbbi cihaz değildir</strong>. Teşhis koymaz, tedavi ya da doz önermez.</li>
+</ul>
+
+<h2>Telefonunuzda tutulanlar</h2>
+<p>İlaç adları, planları (saat, aç/tok, miktar), kutu fotoğrafları, elinizdeki ilaç sayısı, sağlık raporu bitiş tarihleri, hangi ilacı ne zaman aldığınız, yazdığınız tansiyon ve şeker ölçümleri, öğün saatleriniz, kaydettiyseniz sesli hatırlatma kaydı ve takip ettiğiniz kişiler için yazdığınız telefon numaraları. Telefon numarası yalnız “Ara” düğmesi içindir, hiçbir yere gönderilmez.</p>
+<p>Bunlar uygulamanın kendi alanında durur. Android'in otomatik yedeği açıksa ilaç listesi, kutu fotoğrafları ve takip ettiğiniz kişilerin paylaşım anahtarları Google hesabınıza yedeklenebilir; böylece yeni telefona geçince takipleriniz geri gelir. Bu yedek Google'ın hizmetidir ve Android ayarlarından kapatılabilir. Uygulamayı silince telefondaki bilgiler de silinir.</p>
+
+<h2>Paylaşım açılırsa (isteğe bağlı)</h2>
+<p>Paylaşım, sağlık bilgileriniz için açık rızanız alındıktan sonra açılır ve bir QR kod ya da bağlantıyla yakınlarınıza verilir. Paylaşımda yakınlarınızın telefonuna şunlar gider:</p>
+<ul>
+<li>ilaçlarınızın adı, planı ve elinizdeki sayısı (kutu fotoğrafı gitmez),</li>
+<li>hangi ilacı ne zaman aldığınız,</li>
+<li>son 1 ayın tansiyon ve şeker ölçümleri.</li>
+</ul>
+<p>Bu içerik telefonunuzda AES-GCM ile şifrelenir; anahtar yalnız QR kodda ve gönderdiğiniz bağlantıda durur, sunucuya gitmez.</p>
+<p>Taşıyıcı olarak Google Firebase kullanılır: Cloud Firestore (Avrupa, Frankfurt — europe-west3), Firebase Authentication (anonim giriş), Firebase Cloud Messaging ve aynı bölgede çalışan bir Cloud Function. Bu fonksiyonun tek işi, yeni bir kayıt yazılınca eşleşmedeki diğer telefonlara içeriksiz bir “uyan” bildirimi göndermektir; şifreli içeriği okuyamaz. Sunucuda şifrelenmemiş olarak yalnız şunlar durur:</p>
+<ul>
+<li>her telefon için anonim bir kimlik (ad, e-posta, telefon numarası içermez) ve paylaşımın üye listesi,</li>
+<li>telefonları uyarabilmek için bildirim adresi (FCM token),</li>
+<li>kayıtların yazılma ve son görülme zamanları.</li>
+</ul>
+<p>Alınan ilaç kayıtları sunucuda en çok 30 gün durur, sonra kendiliğinden silinir. “Paylaşımı kapat” dediğinizde paylaşım sunucudan silinir. Takip eden kişi “Takibi bırak” dediğinde kimliği paylaşımdan çıkar. Google, Firebase'i işleyen hizmet sağlayıcı olarak teknik kayıtlar (ör. IP adresi) tutabilir: <a href="https://firebase.google.com/support/privacy">firebase.google.com/support/privacy</a>.</p>
+<p>Takip eden yakınınız ilaç listenizde değişiklik <strong>önerebilir</strong>; öneri aynı şifreli yoldan gelir ve siz telefonunuzda kabul etmedikçe hiçbir şey değişmez.</p>
+
+<h2>İlaç bilgileri ve kamera</h2>
+<p>Kutunun karekodu ve kutu üzerindeki yazı telefonda okunur (yazı okuma Google ML Kit ile, cihaz üzerinde ve internetsiz); kamera görüntüsü telefondan çıkmaz. İlaç listesi ve kullanma talimatı özetleri uygulamanın içindedir (TİTCK Ruhsatlı Beşeri Tıbbi Ürünler Listesi). Bir ilacın tam kullanma talimatı açılırken PDF doğrudan titck.gov.tr adresinden indirilir; bu sırada TİTCK sunucusu, her web isteğinde olduğu gibi, telefonunuzun internet adresini görür. Bize bir şey gönderilmez.</p>
+
+<h2>Sesli hatırlatma</h2>
+<p>Bir yakınınız alarm sesi olarak kısa bir cümle kaydedebilir. Kayıt yalnız bu telefonda, telefonun ses klasöründe durur; hiçbir yere gönderilmez ve paylaşıma girmez. Mikrofon yalnız kayıt düğmesine basıldığında kullanılır.</p>
+
+<h2>İzinler</h2>
+<ul>
+<li><strong>Bildirim ve tam zamanlı alarm, açılışta yeniden kurma, titreşim:</strong> ilaç saatinde hatırlatmak için.</li>
+<li><strong>Kamera:</strong> kutunun karekodunu ya da yazısını okumak ve kutunun fotoğrafını çekmek için (isteğe bağlı).</li>
+<li><strong>Mikrofon:</strong> sesli hatırlatmayı kaydetmek için (isteğe bağlı).</li>
+<li><strong>İnternet:</strong> yalnız paylaşım ve kullanma talimatı indirme için.</li>
+</ul>
+<p>İsteğe bağlı izinleri vermeden de uygulama hatırlatıcı olarak çalışır.</p>
+
+<h2>Haklarınız</h2>
+<p>6698 sayılı KVKK'nın 11. maddesi (ve AB'de GDPR) kapsamında bilgilerinize erişme, düzeltme, silme ve işlenmesine itiraz etme haklarınız vardır. Bilgilerin neredeyse tamamı yalnız sizin telefonunuzda olduğundan bunları uygulamanın içinden yönetebilirsiniz; sunucudaki paylaşımı “Paylaşımı kapat” ile silebilirsiniz. Sorularınız için: <a href="mailto:alisarac@gmail.com">alisarac@gmail.com</a>.</p>
+
+<h2>Çocuklar</h2>
+<p>Uygulama yetişkinler için tasarlanmıştır; çocuklara yönelik değildir ve 13 yaşın altındaki kullanıcılardan bilerek veri toplanmaz.</p>
+
+<h2>Değişiklikler</h2>
+<p>Bu politika değişirse bu sayfa güncellenir ve tarih değişir.</p>
+</section>
+
+<hr>
+
+<section id="en" lang="en">
+<h1>Took It: Family Pill Reminder</h1>
+<p class="sub">Privacy Policy · Last updated: 16 October 2026</p>
+<p>This policy explains what the Took It app (“Aldım” in Turkish; Android package com.alisrc.ilactakip) does with your information. Data controller: Ali Saraç, contact: <a href="mailto:alisarac@gmail.com">alisarac@gmail.com</a>.</p>
+
+<h2>In short</h2>
+<ul>
+<li>No account, no ads, no analytics, tracking or crash-reporting tools.</li>
+<li>Your medicines, the times you took them and your readings stay <strong>on your phone</strong>.</li>
+<li>Only if <strong>you turn sharing on</strong> do they travel to your relatives' phones, encrypted on your phone first. Neither the server nor we can read them.</li>
+<li>Took It is a reminder and <strong>not a medical device</strong>. It does not diagnose and does not suggest treatment or doses.</li>
+</ul>
+
+<h2>Kept on your phone</h2>
+<p>Medicine names, their plans (time, before/after food, amount), box photos, the number of pills on hand, health-report end dates, which medicine you took when, the blood pressure and blood sugar readings you enter, your meal times, the voice reminder if you recorded one, and phone numbers you type for the people you follow. A phone number is only used for the “Call” button and is never sent anywhere.</p>
+<p>This is kept in the app's own storage. If Android's automatic backup is on, the medicine list, box photos and the sharing keys of the people you follow may be backed up to your Google account, so that your follows come back on a new phone. That backup is Google's service and can be turned off in Android settings. Uninstalling the app deletes the data on the phone.</p>
+
+<h2>If you turn sharing on (optional)</h2>
+<p>Sharing is turned on only after you give explicit consent for your health information, and is handed to your relatives as a QR code or a link. When sharing, your relatives' phones receive:</p>
+<ul>
+<li>your medicines' names, plans and the number on hand (box photos are not sent),</li>
+<li>which medicine you took when,</li>
+<li>the last month's blood pressure and blood sugar readings.</li>
+</ul>
+<p>This content is encrypted on your phone with AES-GCM; the key exists only in the QR code and the link you send, and never reaches the server.</p>
+<p>Google Firebase is used as the carrier: Cloud Firestore (Europe, Frankfurt — europe-west3), Firebase Authentication (anonymous sign-in), Firebase Cloud Messaging and a Cloud Function in the same region. That function's only job is to send the other phones of a pairing a content-free “wake up” message when a new entry is written; it cannot read the encrypted content. The server holds only these in unencrypted form:</p>
+<ul>
+<li>an anonymous ID per phone (no name, e-mail or phone number) and the pairing's member list,</li>
+<li>a notification address (FCM token) so the phones can be alerted,</li>
+<li>the times entries were written and last seen.</li>
+</ul>
+<p>Dose entries stay on the server for at most 30 days and are then deleted automatically. “Stop sharing” deletes the share from the server. When a follower chooses “Stop following”, their ID is removed from the share. As the service provider running Firebase, Google may keep technical logs (such as IP addresses): <a href="https://firebase.google.com/support/privacy">firebase.google.com/support/privacy</a>.</p>
+<p>A relative who follows you can <strong>suggest</strong> a change to your medicine list; the suggestion arrives the same encrypted way and nothing changes unless you accept it on your phone.</p>
+
+<h2>Medicine information and the camera</h2>
+<p>The code on the box and the printing on it are read on the phone (text recognition by Google ML Kit, on the device and offline); camera images do not leave the phone. The medicine list and the leaflet summaries are inside the app (the Turkish Medicines and Medical Devices Agency's list of licensed medicines, TİTCK). When a medicine's full leaflet is opened, the PDF is downloaded directly from titck.gov.tr; like any web request, the TİTCK server sees your phone's internet address. Nothing is sent to us.</p>
+
+<h2>Voice reminder</h2>
+<p>A relative can record a short sentence to be used as the alarm sound. The recording stays on this phone only, in the phone's sound folder; it is not sent anywhere and is not shared. The microphone is used only while the record button is pressed.</p>
+
+<h2>Permissions</h2>
+<ul>
+<li><strong>Notifications and exact alarms, restoring them after a restart, vibration:</strong> to remind you at the time of each dose.</li>
+<li><strong>Camera:</strong> to read the box's code or printing and take a photo of the box (optional).</li>
+<li><strong>Microphone:</strong> to record the voice reminder (optional).</li>
+<li><strong>Internet:</strong> only for sharing and downloading leaflets.</li>
+</ul>
+<p>The app works as a reminder without the optional permissions.</p>
+
+<h2>Your rights</h2>
+<p>Under Article 11 of Turkey's Personal Data Protection Law No. 6698 (and the GDPR in the EU) you have the right to access, correct and delete your information and to object to its processing. Almost all of it is only on your phone, so you can manage it in the app; “Stop sharing” deletes the share on the server. Questions: <a href="mailto:alisarac@gmail.com">alisarac@gmail.com</a>.</p>
+
+<h2>Children</h2>
+<p>The app is designed for adults; it is not directed at children and does not knowingly collect data from users under 13.</p>
+
+<h2>Changes</h2>
+<p>If this policy changes, this page is updated and its date changes.</p>
+</section>
+</body>
+</html>
