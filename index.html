@@ -40,7 +40,7 @@
 <p>İlaç adları, planları (saat, aç/tok, miktar), kutu fotoğrafları, elinizdeki ilaç sayısı, sağlık raporu bitiş tarihleri, hangi ilacı ne zaman aldığınız, yazdığınız tansiyon ve şeker ölçümleri, öğün saatleriniz, kaydettiyseniz sesli hatırlatma kaydı ve takip ettiğiniz kişiler için yazdığınız telefon numaraları. Telefon numarası yalnız “Ara” düğmesi içindir, hiçbir yere gönderilmez.</p>
 <p>Bunlar uygulamanın kendi alanında durur. Android'in otomatik yedeği açıksa ilaç listesi, kutu fotoğrafları ve takip ettiğiniz kişilerin paylaşım anahtarları Google hesabınıza yedeklenebilir; böylece yeni telefona geçince takipleriniz geri gelir. Bu yedek Google'ın hizmetidir ve Android ayarlarından kapatılabilir. Uygulamayı silince telefondaki bilgiler de silinir.</p>
 
-<h2>Paylaşım açılırsa (isteğe bağlı)</h2>
+<h2>Paylaşım ya da takip açılırsa (isteğe bağlı)</h2>
 <p>Paylaşım, sağlık bilgileriniz için açık rızanız alındıktan sonra açılır ve bir QR kod ya da bağlantıyla yakınlarınıza verilir. Paylaşımda yakınlarınızın telefonuna şunlar gider:</p>
 <ul>
 <li>ilaçlarınızın adı, planı ve elinizdeki sayısı (kutu fotoğrafı gitmez),</li>
@@ -48,14 +48,18 @@
 <li>son 1 ayın tansiyon ve şeker ölçümleri.</li>
 </ul>
 <p>Bu içerik telefonunuzda AES-GCM ile şifrelenir; anahtar yalnız QR kodda ve gönderdiğiniz bağlantıda durur, sunucuya gitmez.</p>
+<p><strong>Firebase'e yalnız siz paylaşımı açınca ya da birini takip etmeye başlayınca bağlanılır.</strong> İkisini de açmayan, yalnız kendi ilaçlarını kullanan bir telefon Firebase'e hiç bağlanmaz; anonim kimlik ya da bildirim adresi almaz.</p>
 <p>Taşıyıcı olarak Google Firebase kullanılır: Cloud Firestore (Avrupa, Frankfurt — europe-west3), Firebase Authentication (anonim giriş), Firebase Cloud Messaging ve aynı bölgede çalışan bir Cloud Function. Bu fonksiyonun tek işi, yeni bir kayıt yazılınca eşleşmedeki diğer telefonlara içeriksiz bir “uyan” bildirimi göndermektir; şifreli içeriği okuyamaz. Sunucuda şifrelenmemiş olarak yalnız şunlar durur:</p>
 <ul>
 <li>her telefon için anonim bir kimlik (ad, e-posta, telefon numarası içermez) ve paylaşımın üye listesi,</li>
 <li>telefonları uyarabilmek için bildirim adresi (FCM token),</li>
 <li>kayıtların yazılma ve son görülme zamanları.</li>
 </ul>
-<p>Alınan ilaç kayıtları sunucuda en çok 30 gün durur, sonra kendiliğinden silinir. “Paylaşımı kapat” dediğinizde paylaşım sunucudan silinir. Takip eden kişi “Takibi bırak” dediğinde kimliği paylaşımdan çıkar. Firebase bileşenleri, hizmetin çalışması için Google'a telefon başına rastgele bir uygulama örneği kimliği (Firebase Installation ID) ve bildirim adresi iletir; bunlar kişiyi tanıtan bilgi içermez. Google, Firebase'i işleyen hizmet sağlayıcı olarak teknik kayıtlar (ör. IP adresi) tutabilir: <a href="https://firebase.google.com/support/privacy">firebase.google.com/support/privacy</a>.</p>
+<p>Alınan ilaç kayıtları sunucuda en çok 30 gün durur, sonra kendiliğinden silinir. “Paylaşımı kapat” dediğinizde paylaşım sunucudan silinir. Takip eden kişi “Takibi bırak” dediğinde kimliği paylaşımdan çıkar. Paylaşım ya da takip açıldıktan sonra Firebase bileşenleri, hizmetin çalışması için Google'a telefon başına rastgele bir uygulama örneği kimliği (Firebase Installation ID) ve bildirim adresi iletir; bunlar kişiyi tanıtan bilgi içermez. Google, Firebase'i işleyen hizmet sağlayıcı olarak teknik kayıtlar (ör. IP adresi) tutabilir: <a href="https://firebase.google.com/support/privacy">firebase.google.com/support/privacy</a>.</p>
 <p>Takip eden yakınınız ilaç listenizde değişiklik <strong>önerebilir</strong>; öneri aynı şifreli yoldan gelir ve siz telefonunuzda kabul etmedikçe hiçbir şey değişmez.</p>
+
+<h2>Tek seferlik satın alma (Aile Paketi)</h2>
+<p>Kendi ilaçlarınız, hatırlatmalarınız, ölçümleriniz ve bunları yakınlarınızla paylaşmak ücretsizdir. Başka birini takip etmek için Aile Paketi gerekir: tek seferlik bir satın almadır ve Google Play Faturalandırma üzerinden yürür. Ödeme bilgileriniz Google'da kalır; uygulama yalnızca "satın alındı" bilgisini cihazda tutar ve yeni telefonda bunu Google Play'den yeniden sorar. Google'ın işlediği veriler için Google Play'in gizlilik politikası geçerlidir. Google Play Faturalandırma dışında satın almayla ilgili hiçbir bilgi kimseyle paylaşılmaz.</p>
 
 <h2>İlaç bilgileri ve kamera</h2>
 <p>Kutunun karekodu ve kutu üzerindeki yazı telefonda okunur (yazı okuma Google ML Kit ile, cihaz üzerinde ve internetsiz); kamera görüntüsü telefondan çıkmaz. İlaç listesi ve kullanma talimatı özetleri uygulamanın içindedir (TİTCK Ruhsatlı Beşeri Tıbbi Ürünler Listesi). Bir ilacın tam kullanma talimatı açılırken PDF doğrudan titck.gov.tr adresinden indirilir; bu sırada TİTCK sunucusu, her web isteğinde olduğu gibi, telefonunuzun internet adresini görür. Bize bir şey gönderilmez.</p>
@@ -68,7 +72,7 @@
 <li><strong>Bildirim ve tam zamanlı alarm, açılışta yeniden kurma, titreşim:</strong> ilaç saatinde hatırlatmak için.</li>
 <li><strong>Kamera:</strong> kutunun karekodunu ya da yazısını okumak ve kutunun fotoğrafını çekmek için (isteğe bağlı).</li>
 <li><strong>Mikrofon:</strong> sesli hatırlatmayı kaydetmek için (isteğe bağlı).</li>
-<li><strong>İnternet:</strong> yalnız paylaşım ve kullanma talimatı indirme için.</li>
+<li><strong>İnternet:</strong> yalnız paylaşım ve takip, kullanma talimatı indirme ve Google Play üzerinden satın alma için.</li>
 </ul>
 <p>İsteğe bağlı izinleri vermeden de uygulama hatırlatıcı olarak çalışır.</p>
 
@@ -101,7 +105,7 @@
 <p>Medicine names, their plans (time, before/after food, amount), box photos, the number of pills on hand, health-report end dates, which medicine you took when, the blood pressure and blood sugar readings you enter, your meal times, the voice reminder if you recorded one, and phone numbers you type for the people you follow. A phone number is only used for the “Call” button and is never sent anywhere.</p>
 <p>This is kept in the app's own storage. If Android's automatic backup is on, the medicine list, box photos and the sharing keys of the people you follow may be backed up to your Google account, so that your follows come back on a new phone. That backup is Google's service and can be turned off in Android settings. Uninstalling the app deletes the data on the phone.</p>
 
-<h2>If you turn sharing on (optional)</h2>
+<h2>If you turn sharing or following on (optional)</h2>
 <p>Sharing is turned on only after you give explicit consent for your health information, and is handed to your relatives as a QR code or a link. When sharing, your relatives' phones receive:</p>
 <ul>
 <li>your medicines' names, plans and the number on hand (box photos are not sent),</li>
@@ -109,14 +113,18 @@
 <li>the last month's blood pressure and blood sugar readings.</li>
 </ul>
 <p>This content is encrypted on your phone with AES-GCM; the key exists only in the QR code and the link you send, and never reaches the server.</p>
+<p><strong>Firebase is contacted only once you turn sharing on or start following someone.</strong> A phone that does neither and only keeps its own medicines never connects to Firebase and gets no anonymous ID or notification address.</p>
 <p>Google Firebase is used as the carrier: Cloud Firestore (Europe, Frankfurt — europe-west3), Firebase Authentication (anonymous sign-in), Firebase Cloud Messaging and a Cloud Function in the same region. That function's only job is to send the other phones of a pairing a content-free “wake up” message when a new entry is written; it cannot read the encrypted content. The server holds only these in unencrypted form:</p>
 <ul>
 <li>an anonymous ID per phone (no name, e-mail or phone number) and the pairing's member list,</li>
 <li>a notification address (FCM token) so the phones can be alerted,</li>
 <li>the times entries were written and last seen.</li>
 </ul>
-<p>Dose entries stay on the server for at most 30 days and are then deleted automatically. “Stop sharing” deletes the share from the server. When a follower chooses “Stop following”, their ID is removed from the share. Firebase components send Google a random per-phone app instance ID (Firebase Installation ID) and a notification address so that the service can work; neither identifies you. As the service provider running Firebase, Google may keep technical logs (such as IP addresses): <a href="https://firebase.google.com/support/privacy">firebase.google.com/support/privacy</a>.</p>
+<p>Dose entries stay on the server for at most 30 days and are then deleted automatically. “Stop sharing” deletes the share from the server. When a follower chooses “Stop following”, their ID is removed from the share. Once sharing or following is on, Firebase components send Google a random per-phone app instance ID (Firebase Installation ID) and a notification address so that the service can work; neither identifies you. As the service provider running Firebase, Google may keep technical logs (such as IP addresses): <a href="https://firebase.google.com/support/privacy">firebase.google.com/support/privacy</a>.</p>
 <p>A relative who follows you can <strong>suggest</strong> a change to your medicine list; the suggestion arrives the same encrypted way and nothing changes unless you accept it on your phone.</p>
+
+<h2>One-time purchase (Family Pack)</h2>
+<p>Your own medicines, reminders, readings and sharing them with your family are free. Following someone else needs the Family Pack: a one-time purchase handled by Google Play Billing. Your payment details stay with Google; the app only keeps a "purchased" flag on the device and asks Google Play again on a new phone. Google Play's privacy policy applies to what Google processes. Apart from Google Play Billing, nothing about the purchase is shared with anyone.</p>
 
 <h2>Medicine information and the camera</h2>
 <p>The code on the box and the printing on it are read on the phone (text recognition by Google ML Kit, on the device and offline); camera images do not leave the phone. The medicine list and the leaflet summaries are inside the app (the Turkish Medicines and Medical Devices Agency's list of licensed medicines, TİTCK). When a medicine's full leaflet is opened, the PDF is downloaded directly from titck.gov.tr; like any web request, the TİTCK server sees your phone's internet address. Nothing is sent to us.</p>
@@ -129,7 +137,7 @@
 <li><strong>Notifications and exact alarms, restoring them after a restart, vibration:</strong> to remind you at the time of each dose.</li>
 <li><strong>Camera:</strong> to read the box's code or printing and take a photo of the box (optional).</li>
 <li><strong>Microphone:</strong> to record the voice reminder (optional).</li>
-<li><strong>Internet:</strong> only for sharing and downloading leaflets.</li>
+<li><strong>Internet:</strong> only for sharing and following, downloading leaflets and purchases through Google Play.</li>
 </ul>
 <p>The app works as a reminder without the optional permissions.</p>
 
